@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "BatchServiceClient",
-    "version": "2021-06-01.14.0",
+    "version": "2022-01-01.15.0",
     "description": "A client for issuing REST requests to the Azure Batch service."
   },
   "x-ms-parameterized-host": {
@@ -11773,6 +11773,22 @@
       ],
       "title": "An environment variable to be set on a Task process."
     },
+    "HttpHeader": {
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "The case-insensitive name of the header to be used while uploading output files"
+        },
+        "value": {
+          "type": "string",
+          "title": "The value of the header to be used while uploading output files"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "A HTTP header name-value pair"
+    },
     "ExitConditions": {
       "type": "object",
       "properties": {
@@ -12670,12 +12686,17 @@
           "title": "The priority of Jobs created under this schedule.",
           "description": "Priority values can range from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest priority. The default value is 0. This priority is used as the default for all Jobs under the Job Schedule. You can update a Job's priority after it has been created using by using the update Job API."
         },
+        "allowTaskPreemption": {
+          "type": "boolean",
+          "title": "Whether Tasks in this job can be preempted by other high priority jobs",
+          "description": "If the value is set to True other high priority jobs submitted to the system will take precedence and will be able requeue tasks from this job. You can update a job's allowTaskPreemption after it has been created using the update job API."
+        },
         "maxParallelTasks": {
           "type": "integer",
           "format": "int32",
           "default": -1,
           "title": "The maximum number of tasks that can be executed in parallel for the job.",
-          "description": "The value of maxParallelTasks must be -1 or greater than 0 if specified. If not specified, the default value is -1, which means there's no limit to the number of tasks that can be run at once. You can update a job's maxParallelTasks after it has been created using the update job API. This property is currently in private preview."
+          "description": "The value of maxParallelTasks must be -1 or greater than 0 if specified. If not specified, the default value is -1, which means there's no limit to the number of tasks that can be run at once. You can update a job's maxParallelTasks after it has been created using the update job API."
         },
         "displayName": {
           "type": "string",
@@ -13135,12 +13156,17 @@
           "title": "The priority of the Job.",
           "description": "Priority values can range from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest priority. The default value is 0."
         },
+        "allowTaskPreemption": {
+          "type": "boolean",
+          "title": "Whether Tasks in this job can be preempted by other high priority jobs",
+          "description": "If the value is set to True other high priority jobs submitted to the system will take precedence and will be able requeue tasks from this job. You can update a job's allowTaskPreemption after it has been created using the update job API."
+        },
         "maxParallelTasks": {
           "type": "integer",
           "format": "int32",
           "default": -1,
           "title": "The maximum number of tasks that can be executed in parallel for the job.",
-          "description": "The value of maxParallelTasks must be -1 or greater than 0 if specified. If not specified, the default value is -1, which means there's no limit to the number of tasks that can be run at once. You can update a job's maxParallelTasks after it has been created using the update job API. This property is currently in private preview."
+          "description": "The value of maxParallelTasks must be -1 or greater than 0 if specified. If not specified, the default value is -1, which means there's no limit to the number of tasks that can be run at once. You can update a job's maxParallelTasks after it has been created using the update job API."
         },
         "constraints": {
           "$ref": "#/definitions/JobConstraints",
@@ -13230,7 +13256,12 @@
           "format": "int32",
           "default": -1,
           "title": "The maximum number of tasks that can be executed in parallel for the job.",
-          "description": "The value of maxParallelTasks must be -1 or greater than 0 if specified. If not specified, the default value is -1, which means there's no limit to the number of tasks that can be run at once. You can update a job's maxParallelTasks after it has been created using the update job API. This property is currently in private preview."
+          "description": "The value of maxParallelTasks must be -1 or greater than 0 if specified. If not specified, the default value is -1, which means there's no limit to the number of tasks that can be run at once. You can update a job's maxParallelTasks after it has been created using the update job API."
+        },
+        "allowTaskPreemption": {
+          "type": "boolean",
+          "title": "Whether Tasks in this job can be preempted by other high priority jobs",
+          "description": "If the value is set to True other high priority jobs submitted to the system will take precedence and will be able requeue tasks from this job. You can update a job's allowTaskPreemption after it has been created using the update job API."
         },
         "constraints": {
           "$ref": "#/definitions/JobConstraints",
@@ -14496,7 +14527,7 @@
           "type": "integer",
           "format": "int32",
           "title": "The number of low-priority Compute Nodes currently in the Pool.",
-          "description": "low-priority Compute Nodes which have been preempted are included in this count."
+          "description": "Low-priority Compute Nodes which have been preempted are included in this count."
         },
         "targetDedicatedNodes": {
           "type": "integer",
@@ -16214,7 +16245,12 @@
           "type": "integer",
           "format": "int32",
           "title": "The maximum number of tasks that can be executed in parallel for the job.",
-          "description": "The value of maxParallelTasks must be -1 or greater than 0 if specified. If not specified, the default value is -1, which means there's no limit to the number of tasks that can be run at once. You can update a job's maxParallelTasks after it has been created using the update job API. This property is currently in private preview."
+          "description": "The value of maxParallelTasks must be -1 or greater than 0 if specified. If not specified, the default value is -1, which means there's no limit to the number of tasks that can be run at once. You can update a job's maxParallelTasks after it has been created using the update job API."
+        },
+        "allowTaskPreemption": {
+          "type": "boolean",
+          "title": "Whether Tasks in this job can be preempted by other high priority jobs",
+          "description": "If the value is set to True other high priority jobs submitted to the system will take precedence and will be able requeue tasks from this job. You can update a job's allowTaskPreemption after it has been created using the update job API."
         },
         "onAllTasksComplete": {
           "title": "The action the Batch service should take when all Tasks in the Job are in the completed state.",
@@ -16250,6 +16286,18 @@
           "format": "int32",
           "title": "The priority of the Job.",
           "description": "Priority values can range from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest priority. If omitted, it is set to the default value 0."
+        },
+        "maxParallelTasks": {
+          "type": "integer",
+          "format": "int32",
+          "default": -1,
+          "title": "The maximum number of tasks that can be executed in parallel for the job.",
+          "description": "The value of maxParallelTasks must be -1 or greater than 0 if specified. If not specified, the default value is -1, which means there's no limit to the number of tasks that can be run at once. You can update a job's maxParallelTasks after it has been created using the update job API."
+        },
+        "allowTaskPreemption": {
+          "type": "boolean",
+          "title": "Whether Tasks in this job can be preempted by other high priority jobs",
+          "description": "If the value is set to True other high priority jobs submitted to the system will take precedence and will be able requeue tasks from this job. You can update a job's allowTaskPreemption after it has been created using the update job API."
         },
         "constraints": {
           "$ref": "#/definitions/JobConstraints",
@@ -16644,6 +16692,14 @@
           "title": "The reference to the user assigned identity to use to access Azure Blob Storage specified by containerUrl",
           "description": "The identity must have write access to the Azure Blob Storage container",
           "$ref": "#/definitions/ComputeNodeIdentityReference"
+        },
+        "uploadHeaders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/HttpHeader"
+          },
+          "title": "A list of name-value pairs for headers to be used in uploading output files",
+          "description": "These headers will be specified when uploading files to Azure Storage. Official document on allowed headers when uploading blobs: https://docs.microsoft.com/en-us/rest/api/storageservices/put-blob#request-headers-all-blob-types"
         }
       },
       "required": [
@@ -17176,7 +17232,7 @@
         },
         "lowPriority": {
           "$ref": "#/definitions/NodeCounts",
-          "title": "The number of low-priority Compute Nodes in each state."
+          "title": "The number of low priority Compute Nodes in each state."
         }
       },
       "required": [
