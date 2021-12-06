@@ -3600,7 +3600,7 @@
           "description": "A base64 encoded string that represents the content of a detector."
         },
         "systemData": {
-          "$ref": "#/definitions/SystemData"
+          "$ref": "#/definitions/ArmSystemData"
         }
       },
       "description": "Detector response properties."
@@ -5539,7 +5539,7 @@
       ],
       "description": "The Batch List supported SKUs operation response."
     },
-    "SystemData": {
+    "ArmSystemData": {
       "$ref": "../../../../../common-types/resource-management/v2/types.json#/definitions/systemData",
       "readOnly": true,
       "description": "Metadata pertaining to creation and last modification of the resource."
